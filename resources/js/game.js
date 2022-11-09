@@ -3,7 +3,8 @@ import {easyGuessWords, allWords} from './words';
 
 export default {
     numberOfAllowedGuesses: 3,
-    wordToGuess: easyGuessWords[Math.floor(Math.random() * easyGuessWords.length)],
+    // wordToGuess: easyGuessWords[Math.floor(Math.random() * easyGuessWords.length)],
+    wordToGuess: 'cat',
     currentRowIndex: 0,
     state: 'active',
     errors: false,
@@ -92,7 +93,7 @@ export default {
             .flat()
             .filter(tile => tile.status)
             .sort((t1, t2) =>
-                Number((t2.status === 'correct')) ?? -1)
+              (t2.status === 'correct') ? 1 : -1)
             .find(tile => tile.letter === key)
     }
 };
