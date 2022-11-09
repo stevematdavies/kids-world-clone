@@ -121,15 +121,21 @@ header {
 }
 
 output {
-    display: block;
-    font-weight: 500;
-    font-style: italic;
-    font-size: 17px;
-    margin-top: 1rem;
+    font-size: 16px;
     position: absolute;
-    top: 0;
-    right: 2rem;
-    max-width: 350px;
+    top: -50px;
+    right: -8rem;
+    color: #e5b849;
+    padding: 1rem;
+    border-radius: 50%;
+    width: 160px;
+    height: 75px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 5px solid #3f5f8a;
+    background: #1a283f;
+    font-family: 'Kalam', cusrsive, serif;
 }
 
 output:empty {
