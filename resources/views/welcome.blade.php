@@ -14,7 +14,7 @@
         <img src="/images/trycat-logo.svg" alt="">
     </h1>
 
-    <div id="game-grid">
+    <div id="game">
         <template x-for="row in gameBoard">
             <div class="row">
                 <template x-for="tile in row">
