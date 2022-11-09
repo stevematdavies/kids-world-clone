@@ -31,6 +31,16 @@
         </template>
     </div>
 
+    <div id="keyboard" @click.stop="$event.target.matches('button') && onKeyboardKeyPress($event.target.textContent)">
+        <template x-for="row in keyboard">
+            <div class="row">
+                <template x-for="key in row">
+                    <button type="button" :data.key="key" x-text="key"></button>
+                </template>
+            </div>
+        </template>
+    </div>
+
 </main>
 </body>
 </html>

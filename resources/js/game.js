@@ -8,6 +8,11 @@ export default {
     state: 'active',
     errors: false,
     message: '',
+    keyboard: [
+        'qwertyuiop'.split(''),
+        'asdfghjkl'.split(''),
+        ['Enter', ...'zxcvbnm'.split(''), 'Backspace'],
+    ],
 
     get currentGuess() {
         return this.currentRow.map(tile => tile.letter).join('');
@@ -81,4 +86,8 @@ export default {
             this.currentRowIndex++;
         }
     },
+
+    onKeyboardKeyPress(key) {
+        this.onKeyPressed(key)
+    }
 };
