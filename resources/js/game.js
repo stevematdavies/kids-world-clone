@@ -85,5 +85,14 @@ export default {
         } else {
             this.currentRowIndex++;
         }
+    },
+
+    matchingTileForKey(key) {
+        return this.gameBoard
+            .flat()
+            .filter(tile => tile.status)
+            .sort((t1, t2) =>
+                Number((t2.status === 'correct')) ?? -1)
+            .find(tile => tile.letter === key)
     }
 };

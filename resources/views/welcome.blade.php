@@ -35,7 +35,12 @@
         <template x-for="row in keyboard">
             <div class="row">
                 <template x-for="key in row">
-                    <button type="button" class="key" x-text="key"></button>
+                    <button
+                        type="button"
+                        class="key"
+                        :class="matchingTileForKey(key)?.status"
+                        x-text="key">
+                    </button>
                 </template>
             </div>
         </template>
