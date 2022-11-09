@@ -1,10 +1,12 @@
 import Tile from './Tile';
+import words from './words';
 
 export default {
     numberOfAllowedGuesses: 3,
     wordToGuess: "cat",
     currentRowIndex: 0,
     state: 'active',
+    errors: false,
     message: '',
 
     get currentGuess() {
@@ -27,6 +29,7 @@ export default {
 
     onKeyPressed(key) {
         this.message = "";
+        this.errors = false;
         if (/^[A-z]$/.test(key)) {
             this.fillCurrentTile(key)
         } else if (key === "Backspace") {
@@ -82,6 +85,12 @@ export default {
 
     submitGuess() {
         if (this.currentGuess.length < this.wordToGuess.length) return;
+
+        if (!words.includes(this.currentGuess)) {
+            this.errors = true;
+            return this.message = "This is not a word...";
+        }
+
         this.colorTileForCurrentRow();
         this.updateMessage();
     }
