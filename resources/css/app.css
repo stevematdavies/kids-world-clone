@@ -135,6 +135,7 @@ output {
     justify-content: center;
     border: 5px solid #3f5f8a;
     background: #1a283f;
+    text-align: center;
 }
 
 output:empty {

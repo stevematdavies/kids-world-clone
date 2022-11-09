@@ -1,5 +1,5 @@
 import Tile from './Tile';
-import { easyGuessWords, allWords } from './words';
+import {easyGuessWords, allWords} from './words';
 
 export default {
     numberOfAllowedGuesses: 3,
@@ -70,19 +70,19 @@ export default {
 
         if (!allWords.includes(this.currentGuess)) {
             this.errors = true;
-            return this.message = "This is not a word...";
+            this.message = "This is not a word...";
         }
 
         Tile.updateStatusesForRow(this.currentRow, this.wordToGuess)
 
         if (this.currentGuess === this.wordToGuess) {
             this.state = 'complete'
-            return this.message = 'Well done, you win!';
-        }
-        if (this.remainingGuesses === 0) {
+            this.message = 'Well done, you win!';
+        } else if (this.remainingGuesses === 0) {
             this.state = 'complete'
-            return this.message = `You loose.The word was: "${this.wordToGuess}"`;
+            this.message = `You loose.The word was: "${this.wordToGuess}"`;
         } else {
+            this.message = `...its not the word, try again"`;
             this.currentRowIndex++;
         }
     },

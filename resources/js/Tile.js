@@ -11,7 +11,7 @@ class Tile {
         this.letter = key.toLowerCase();
     }
 
-    empty(key) {
+    empty() {
         this.letter = '';
     }
 
