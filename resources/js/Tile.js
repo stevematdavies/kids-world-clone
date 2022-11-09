@@ -10,12 +10,18 @@ class Tile {
         this.letter = '';
     }
 
-    updateStatus(wordToGuess, currentGuess) {
-        this.status = wordToGuess.includes(this.letter) ? 'present' : 'absent'
-        if (currentGuess.indexOf(this.letter) === wordToGuess.indexOf(this.letter)) {
-            this.status = 'correct'
+    updateStatus(wordToGuess, index){
+        if (!wordToGuess.includes(this.letter)) {
+            return this.status = 'absent'
         }
+
+        if (this.letter ===  wordToGuess[index]) {
+            return this.status = 'correct'
+        }
+
+        this.status = 'present';
     }
+
 }
 
 export default Tile;

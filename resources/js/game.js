@@ -46,12 +46,6 @@ export default {
                 break;
             }
         }
-        if (this.currentTileIndex === this.wordToGuess.length - 1) {
-            this.currentRowIndex++;
-            this.currentTileIndex = 0;
-        } else {
-            this.currentTileIndex++;
-        }
     },
 
     emptyCurrentTile() {
@@ -63,13 +57,31 @@ export default {
         }
     },
 
-    colorTileForCurrentRow() {
-        for (let tile of this.currentRow) {
-            tile.updateStatus(this.wordToGuess, this.currentGuess)
+    submitGuess() {
+        if (this.currentGuess.length < this.wordToGuess.length) {
+            return;
         }
-    },
 
-    updateMessage() {
+        if (!words.includes(this.currentGuess)) {
+            this.errors = true;
+            return this.message = "This is not a word...";
+        }
+
+        this.currentRow.forEach((tile, index) => {
+           tile.updateStatus(this.wordToGuess, index)
+        });
+
+        this.currentRow.forEach((tile, index) => {
+            if(tile.status !== 'present'){
+                return;
+            }
+
+            if (this.currentRow.some(t => t.letter === tile.letter && t.status === 'correct')){
+                tile.status = 'absent';
+            }
+        });
+
+
         if (this.currentGuess === this.wordToGuess) {
             this.state = 'complete'
             return this.message = 'Well done, you win!';
@@ -77,21 +89,8 @@ export default {
         if (this.remainingGuesses === 0) {
             this.state = 'complete'
             return this.message = `You loose.The word was: "${this.wordToGuess}"`;
+        } else {
+            this.currentRowIndex++;
         }
-        this.currentRowIndex++;
-        return this.message = `...incorrect keep guessing`;
-
     },
-
-    submitGuess() {
-        if (this.currentGuess.length < this.wordToGuess.length) return;
-
-        if (!words.includes(this.currentGuess)) {
-            this.errors = true;
-            return this.message = "This is not a word...";
-        }
-
-        this.colorTileForCurrentRow();
-        this.updateMessage();
-    }
 };
