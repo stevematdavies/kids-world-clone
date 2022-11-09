@@ -8,17 +8,22 @@
     @vite(['resources/js/app.js'])
 </head>
 <body>
-    <main x-data="game" @keyup.window="onKeyPressed($event.key)">
-        <div id="game-grid">
-            <template x-for="row in gameBoard">
-                    <div class="row">
-                    <template x-for="tile in row">
-                        <div class="tile" :class="tile.status" x-text="tile.letter"></div>
-                    </template>
-                    </div>
-            </template>
-        </div>
-        <output x-text="message"></> 
-    </main>
+<main x-data="game" @keyup.window="onKeyPressed($event.key)">
+
+    <h1 aria-label="TryCat">
+        <img src="/images/trycat-logo.svg" alt="">
+    </h1>
+
+    <div id="game-grid">
+        <template x-for="row in gameBoard">
+            <div class="row">
+                <template x-for="tile in row">
+                    <div class="tile" :class="tile.status" x-text="tile.letter"></div>
+                </template>
+            </div>
+        </template>
+    </div>
+    <output x-text="message"></output>
+</main>
 </body>
 </html>
