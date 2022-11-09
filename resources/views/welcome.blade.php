@@ -35,7 +35,7 @@
         <template x-for="row in keyboard">
             <div class="row">
                 <template x-for="key in row">
-                    <button type="button" :data.key="key" x-text="key"></button>
+                    <button type="button" class="key" x-text="key"></button>
                 </template>
             </div>
         </template>
