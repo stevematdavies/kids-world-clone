@@ -23,8 +23,9 @@ export default {
 
     init() {
         this.gameBoard = Array.from({length: this.numberOfAllowedGuesses}, () =>
-            Array.from({length: this.wordToGuess.length}, () => new Tile())
-        )
+            Array.from({length: this.wordToGuess.length},
+                (item, index) => new Tile(index))
+        );
     },
 
     onKeyPressed(key) {
@@ -67,20 +68,7 @@ export default {
             return this.message = "This is not a word...";
         }
 
-        this.currentRow.forEach((tile, index) => {
-           tile.updateStatus(this.wordToGuess, index)
-        });
-
-        this.currentRow.forEach((tile, index) => {
-            if(tile.status !== 'present'){
-                return;
-            }
-
-            if (this.currentRow.some(t => t.letter === tile.letter && t.status === 'correct')){
-                tile.status = 'absent';
-            }
-        });
-
+        Tile.updateStatusesForRow(this.currentRow, this.wordToGuess)
 
         if (this.currentGuess === this.wordToGuess) {
             this.state = 'complete'
