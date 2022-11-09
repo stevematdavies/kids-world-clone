@@ -31,7 +31,7 @@
         </template>
     </div>
 
-    <div id="keyboard" @click.stop="$event.target.matches('button') && onKeyboardKeyPress($event.target.textContent)">
+    <div id="keyboard" @click.stop="$event.target.matches('button') && onKeyPressed($event.target.textContent)">
         <template x-for="row in keyboard">
             <div class="row">
                 <template x-for="key in row">

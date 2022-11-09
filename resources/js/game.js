@@ -85,9 +85,5 @@ export default {
         } else {
             this.currentRowIndex++;
         }
-    },
-
-    onKeyboardKeyPress(key) {
-        this.onKeyPressed(key)
     }
 };
