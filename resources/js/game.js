@@ -29,10 +29,10 @@ export default {
         this.message = "";
         if (/^[A-z]$/.test(key)) {
             this.fillCurrentTile(key)
-        } else if (key === "Enter") {
-                this.submitGuess()
-        }  else if (key === "Backspace"){
+        } else if (key === "Backspace") {
             this.emptyCurrentTile()
+        } else if (key === "Enter") {
+            this.submitGuess()
         }
     },
 
