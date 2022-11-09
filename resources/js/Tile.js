@@ -19,11 +19,10 @@ class Tile {
         for (const tile of row) {
             tile.updateStatus(wordToGuess)
         }
-
-        row.filter(ti => ti.status === 'present' &&
-            row.some(t => t.letter === ti.letter && t.status === 'correct'))
+        row
+            .filter(tile => tile.status === 'present')
+            .filter(tile => row.some(t => t.letter === tile.letter && t.status === 'correct'))
             .forEach(tile => tile.status = 'absent')
-
     }
 
     updateStatus(wordToGuess) {
