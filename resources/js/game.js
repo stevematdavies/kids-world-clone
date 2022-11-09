@@ -1,9 +1,9 @@
 import Tile from './Tile';
-import words from './words';
+import { easyGuessWords, allWords } from './words';
 
 export default {
     numberOfAllowedGuesses: 3,
-    wordToGuess: "cat",
+    wordToGuess: easyGuessWords[Math.floor(Math.random() * easyGuessWords.length)],
     currentRowIndex: 0,
     state: 'active',
     errors: false,
@@ -68,7 +68,7 @@ export default {
             return;
         }
 
-        if (!words.includes(this.currentGuess)) {
+        if (!allWords.includes(this.currentGuess)) {
             this.errors = true;
             return this.message = "This is not a word...";
         }
